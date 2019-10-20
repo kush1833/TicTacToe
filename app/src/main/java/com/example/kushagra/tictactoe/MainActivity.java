@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
+        // Set listeners for all buttons
         for(int i = 0; i < 3; i++){
             for(int j = 0;j < 3; j++){
                 String s = "tt"+i+""+j+"Btn";
@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             player1Turn = !player1Turn;
         }
     }
+    
+    // Check for Win
     private boolean checkForWin(){
         String[][] field= new String[3][3];
         for(int i = 0; i < 3; i++){
@@ -106,26 +108,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return false;
     }
+    
+    // If Player 1 wins
     private void player1Win(){
         player1Point++;
         Toast.makeText(this, "Player 1 wins", Toast.LENGTH_SHORT).show();
         updatePoints();
         resetField();
     }
+    
+    // If Player 2 wins
     private void player2Win(){
         player2Point++;
         Toast.makeText(this, "Player 2 wins", Toast.LENGTH_SHORT).show();
         updatePoints();
         resetField();
     }
+    
+    // match is draw
     private void matchDraw(){
         Toast.makeText(this, "Match Drawn", Toast.LENGTH_SHORT).show();
         resetField();
     }
+    
+    
+    // Update the points of each player
     private void updatePoints(){
         player1TextView.setText("PLAYER 1:"+player1Point);
         player2TextView.setText("PLAYER 2:"+player2Point);
     }
+    
+    
+    // Reset the game
     private void resetField(){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
